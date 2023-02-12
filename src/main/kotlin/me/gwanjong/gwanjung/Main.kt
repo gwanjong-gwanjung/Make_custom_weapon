@@ -1,10 +1,7 @@
 package me.gwanjong.gwanjung
 
 import io.github.monun.kommand.kommand
-import me.gwanjong.gwanjung.weapon.ElderWand
-import me.gwanjong.gwanjung.weapon.ElderWandEvent
-import me.gwanjong.gwanjung.weapon.Hyperion
-import me.gwanjong.gwanjung.weapon.HyperionEvent
+import me.gwanjong.gwanjung.weapon.*
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -14,6 +11,7 @@ class Main : JavaPlugin(){
 
         Bukkit.getPluginManager().registerEvents(ElderWandEvent(), this)
         Bukkit.getPluginManager().registerEvents(HyperionEvent(), this)
+        //Bukkit.getPluginManager().registerEvents(HumanBowEvent(), this)
 
         logger.info("==============================")
         logger.info("        plugin is loaded      ")
@@ -34,6 +32,12 @@ class Main : JavaPlugin(){
                 then("Hyperion") {
                     executes {
                         Hyperion(player)
+                    }
+                }
+                then("HumanBow") {
+                    executes {
+                        player.sendMessage("개발중")
+                        //HumanBow(player)
                     }
                 }
 
