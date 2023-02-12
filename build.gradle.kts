@@ -15,6 +15,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
     implementation("io.github.monun:kommand-api:3.1.0")
     implementation("io.github.monun:tap-api:4.8.0")
+    implementation("io.github.monun:invfx-api:3.2.0")
 
 
 }

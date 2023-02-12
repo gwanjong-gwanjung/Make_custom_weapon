@@ -71,7 +71,7 @@ class ElderWandEvent():Listener{
         val to = event.to
         val block = entity.location.block
 
-        if (entity.isOnGround || isTouchingWall(to,from)) {
+        if (entity.isOnGround || entity.location.isBlock) {
             if (entity.customName == "cannon") {
                 entity.world.createExplosion(entity.location, 5f)
                 entity.remove()
@@ -79,9 +79,4 @@ class ElderWandEvent():Listener{
         }
     }
 
-    private fun isTouchingWall(to: Location, from: Location): Boolean {
-        val blockTo = to.block
-        val blockFrom = from.block
-        return blockTo.type.isSolid || blockFrom.type.isSolid
-    }
 }
