@@ -14,8 +14,6 @@ fun MakeWeapon(itemStack: ItemStack, weapon_Name: String, weapon_Type:String, ba
             lore.add(Component.text("${ChatColor.WHITE}기초 능력치: $base_attack_power"))
             lore.add(Component.text("${ChatColor.WHITE}추가 능력치: $additional_abilities"))
             lore(lore)
-            val key = NamespacedKey(Main(), "starforce")
-            persistentDataContainer?.set(key, PersistentDataType.STRING, "starforce")
         }
 
     }
