@@ -15,6 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta
 
 
 fun Hyperion(player: Player){
+
     val Lore = ArrayList<Component>()
     val Hyperion = MakeWeapon(ItemStack(Material.IRON_SWORD), "Hyperion","한손검","우클릭시 앞으로 8칸 이동하고 폭발을 일으킨다","들고 있으면 폭발데미지를 입지 않는다", Lore)
     Lore.add(Component.text("하이픽셀 스카이블럭의 최종 무기 중 하나"))

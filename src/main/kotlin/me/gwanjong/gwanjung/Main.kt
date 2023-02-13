@@ -1,7 +1,6 @@
 package me.gwanjong.gwanjung
 
 import io.github.monun.kommand.kommand
-
 import me.gwanjong.gwanjung.weapon.*
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -12,6 +11,7 @@ class Main : JavaPlugin(){
 
         Bukkit.getPluginManager().registerEvents(ElderWandEvent(), this)
         Bukkit.getPluginManager().registerEvents(HyperionEvent(), this)
+        Bukkit.getPluginManager().registerEvents(GuidedArrowEvent(), this)
         //Bukkit.getPluginManager().registerEvents(HumanBowEvent(), this)
 
 
@@ -43,6 +43,11 @@ class Main : JavaPlugin(){
                         //HumanBow(player)
                     }
                 }
+                then("GuidedArrow") {
+                    executes {
+                        GuidedArrow(player)
+                    }
+                }
 
             }
 
@@ -51,8 +56,5 @@ class Main : JavaPlugin(){
 
     }
 
-    override fun onDisable() {
-
-    }
 }
 

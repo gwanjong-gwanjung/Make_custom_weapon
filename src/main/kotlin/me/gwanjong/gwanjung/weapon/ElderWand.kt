@@ -4,7 +4,6 @@ import io.papermc.paper.event.entity.EntityMoveEvent
 import me.gwanjong.gwanjung.MakeWeapon
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
-import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Fireball
@@ -15,8 +14,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.meta.ItemMeta
-import org.bukkit.scoreboard.Criteria.AIR
 
 fun ElderWand(player: Player){
     val Lore = ArrayList<Component>()
@@ -35,7 +32,7 @@ class ElderWandEvent():Listener{
     fun EladerWandEvent(event: PlayerInteractEvent) {
         val action = event.action
         val player = event.player
-
+        if(player.inventory.itemInMainHand.type != Material.STICK) return
         if (action !in listOf(Action.LEFT_CLICK_AIR, Action.LEFT_CLICK_BLOCK, Action.RIGHT_CLICK_AIR, Action.RIGHT_CLICK_BLOCK)) return
 
         val item = event.item
