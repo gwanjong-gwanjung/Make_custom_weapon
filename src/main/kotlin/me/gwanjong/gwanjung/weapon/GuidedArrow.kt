@@ -20,7 +20,7 @@ import org.bukkit.metadata.FixedMetadataValue
 fun GuidedArrow(player: Player){
 
     val Lore = ArrayList<Component>()
-    val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","좌클릭을 누르면 100개의 화살이 발사된다","우클릭을 하면 화살이 삭제된다", Lore)
+    val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","우클릭을 누르면 100개의 화살이 발사된다","좌클릭을 하면 화살이 삭제된다", Lore)
 
     GuidedArrow.lore(Lore)
     player.inventory.addItem(GuidedArrow)
@@ -55,21 +55,49 @@ class GuidedArrowEvent(): Listener {
 
         val arrowCount = countArrows(player)
         if (event.action == Action.LEFT_CLICK_AIR || event.action == Action.LEFT_CLICK_BLOCK) {
-            if (player.gameMode == GameMode.SURVIVAL || player.gameMode == GameMode.ADVENTURE) {
-                if (arrowCount < 100) {
-                    player.sendMessage("${ChatColor.LIGHT_PURPLE}화살이 부족합니다")
-                    return
-                }
-                for (i in 0..99) {
-                    player.inventory.removeItem(ItemStack(Material.ARROW))
+
+            for(world in Bukkit.getWorlds()) {
+                for(entity in world.entities) {
+                    if(entity is Arrow) {
+                    entity.remove()
+                    }
                 }
             }
-            for (i in 0..99) {
-                player.launchProjectile(Arrow::class.java).damage = 1000.0
-            }
-        } else {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "kill @e[type=minecraft:arrow]")
         }
+    }
+
+    @EventHandler
+    fun Shot(event: EntityShootBowEvent) {
+
+
+        val entity = event.entity
+        if(entity.type != EntityType.PLAYER) return
+
+        val player = event.entity as Player
+        if(player.inventory.itemInMainHand.type != Material.BOW) return
+
+        val item = player.inventory.itemInMainHand
+        val displayName = item.itemMeta?.displayName ?: return
+
+        if (displayName != "${ChatColor.LIGHT_PURPLE}신기전") return
+        event.isCancelled = true
+
+        val arrowCount = countArrows(player)
+
+        if (player.gameMode == GameMode.SURVIVAL || player.gameMode == GameMode.ADVENTURE) {
+            if (arrowCount < 100) {
+                player.sendMessage("${ChatColor.LIGHT_PURPLE}화살이 부족합니다")
+                return
+            }
+
+            for (i in 0..99) {
+                player.inventory.removeItem(ItemStack(Material.ARROW))
+            }
+        }
+        for (i in 0..99) {
+            player.launchProjectile(Arrow::class.java).damage = 1000.0
+        }
+
     }
 
 
