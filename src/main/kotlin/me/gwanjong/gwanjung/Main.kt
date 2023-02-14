@@ -11,7 +11,7 @@ class Main : JavaPlugin(){
 
         Bukkit.getPluginManager().registerEvents(ElderWandEvent(), this)
         Bukkit.getPluginManager().registerEvents(HyperionEvent(), this)
-        Bukkit.getPluginManager().registerEvents(GuidedArrowEvent(), this)
+        Bukkit.getPluginManager().registerEvents(SingijeonEvent(), this)
         //Bukkit.getPluginManager().registerEvents(HumanBowEvent(), this)
 
 
@@ -43,9 +43,9 @@ class Main : JavaPlugin(){
                         //HumanBow(player)
                     }
                 }
-                then("GuidedArrow") {
+                then("singijeon") {
                     executes {
-                        GuidedArrow(player)
+                        singijeon(player)
                     }
                 }
 
