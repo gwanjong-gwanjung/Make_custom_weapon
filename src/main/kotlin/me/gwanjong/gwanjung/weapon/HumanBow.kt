@@ -1,22 +1,23 @@
 package me.gwanjong.gwanjung.weapon
 
-import me.gwanjong.gwanjung.Main
 import me.gwanjong.gwanjung.MakeWeapon
 import net.kyori.adventure.text.Component
-import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Arrow
+import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.ProjectileLaunchEvent
+import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.entity.EntityShootBowEvent
+import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.inventory.ItemStack
 
 
 fun HumanBow(player: Player){
     val Lore = ArrayList<Component>()
-    val HumanBow = MakeWeapon(ItemStack(Material.BOW), "인간 활","활","이 활로 화살을 발사하면 자신이 화살이 되어 날아간다","들고 있을때 낙하 대미지를 입지 않는다", Lore)
+    val HumanBow = MakeWeapon(ItemStack(Material.BOW), "인간활","활","이 활로 화살을 발사하면 자신이 화살이 되어 날아간다","들고 있을때 낙하 대미지를 입지 않는다", Lore)
     HumanBow.lore(Lore)
     player.inventory.addItem(HumanBow)
 
@@ -25,26 +26,45 @@ fun HumanBow(player: Player){
 class HumanBowEvent(): Listener {
 
     @EventHandler
-    fun onProjectileLaunch(event: ProjectileLaunchEvent) {
+    fun onProjectileLaunch(event: EntityShootBowEvent) {
         val entity = event.entity
-        val player = entity.shooter as Player
-        val item = player.itemInHand
-        val itemMeta = item!!.itemMeta
-        val displayName = itemMeta!!.displayName
-        if (entity !is Arrow && entity.shooter !is Player) return
-        if (displayName != "${ChatColor.LIGHT_PURPLE}인간 활") return
-        entity.customName = "HumanBow"
-        var taskId: Int = -1
+        if (entity.type != EntityType.PLAYER) return
 
-        taskId = Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Main(), {
-            if (player.location.distance(entity.location) > 1) {
-                player.teleport(entity.location)
-            } else {
-                Bukkit.getScheduler().cancelTask(taskId)
-            }
+        val player = event.entity as Player
 
-        }, 0L, 1L)
+        if (player.inventory.itemInMainHand.type != Material.BOW) return
 
+        val item = player.inventory.itemInMainHand
+        val displayName = item.itemMeta?.displayName ?: return
+
+        if (displayName != "${ChatColor.LIGHT_PURPLE}인간활") return
+
+
+        player.setCooldown(player.inventory.itemInMainHand.type,10000)
+
+        event.projectile.addScoreboardTag("Human_Bow")
+
+    }
+
+    @EventHandler
+    fun onProjectileHit(e: ProjectileHitEvent) { //투사체 착탄시 실행
+        if (e.entity.scoreboardTags.contains("Human_Bow")) {  //만약 화살이 명령어로 생성되었다면
+            val arrow = e.entity as Arrow //객체를 화살로 변환
+            val player = arrow.shooter as Player
+            player.noDamageTicks = 60
+            arrow.world.createExplosion(arrow.location, 150f) //화살의 착탄 위치에 폭발 생성
+            player.world.strikeLightning(arrow.location)
+            player.teleport(arrow)
+
+            arrow.remove() //화살 삭제
+        }
+    }
+
+    @EventHandler
+    fun playerDeadEvent(event : EntityDeathEvent) {
+        if(event.entity.type != EntityType.PLAYER) return
+        val player = event.entity as Player
+        player.setCooldown(Material.BOW, 0)
     }
 
 }
