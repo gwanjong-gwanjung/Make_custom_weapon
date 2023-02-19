@@ -23,7 +23,9 @@ import org.bukkit.metadata.FixedMetadataValue
 fun singijeon(player: Player){
 
     val Lore = ArrayList<Component>()
-    val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","우클릭을 누르면 100개의 화살이 발사된다","좌클릭을 하면 화살이 삭제된다", Lore)
+    val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","우클릭을 누르면 100개의 화살이 발사된다","좌클릭을 하면 화살이 삭제된다", 200 ,Lore)
+    Lore.add(Component.text("${ChatColor.BLUE}"))
+    Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
 
     GuidedArrow.lore(Lore)
     player.inventory.addItem(GuidedArrow)
@@ -62,10 +64,11 @@ class SingijeonEvent(): Listener {
             for(world in Bukkit.getWorlds()) {
                 for(entity in world.entities) {
                     if(entity is Arrow) {
-                    entity.remove()
+                        entity.remove()
                     }
                 }
             }
+            player.sendMessage("${ChatColor.LIGHT_PURPLE}화살이 제거되었습니다")
         }
     }
 
@@ -102,6 +105,7 @@ class SingijeonEvent(): Listener {
             arrow.damage = 1000.0
             arrow.addScoreboardTag("singijeon")
         }
+        player.setCooldown(player.inventory.itemInMainHand.type,200)
 
     }
 

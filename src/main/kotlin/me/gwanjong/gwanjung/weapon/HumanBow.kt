@@ -17,7 +17,9 @@ import org.bukkit.inventory.ItemStack
 
 fun HumanBow(player: Player){
     val Lore = ArrayList<Component>()
-    val HumanBow = MakeWeapon(ItemStack(Material.BOW), "인간활","활","이 활로 화살을 발사하면 자신이 화살이 되어 날아간다","들고 있을때 낙하 대미지를 입지 않는다", Lore)
+    val HumanBow = MakeWeapon(ItemStack(Material.BOW), "인간활","활","이 활로 화살을 발사하면 화살이 발사된 위치에 자신이 텔레포트된다","능력 사용 후 무적타임 3초가 주어진다", 10000,Lore)
+    Lore.add(Component.text("${ChatColor.BLUE}"))
+    Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
     HumanBow.lore(Lore)
     player.inventory.addItem(HumanBow)
 
