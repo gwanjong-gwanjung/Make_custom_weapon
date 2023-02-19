@@ -10,11 +10,14 @@ import org.bukkit.event.Listener
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 
+var cultural_language = false
 
 class Main : JavaPlugin(), Listener{
 
 
     override fun onEnable() {
+
+        cultural_language = false
 
         Bukkit.getPluginManager().registerEvents(ElderWandEvent(), this)
         Bukkit.getPluginManager().registerEvents(HyperionEvent(), this)
@@ -37,21 +40,28 @@ class Main : JavaPlugin(), Listener{
 
                     then("ElderWand") {
                         executes {
+                            /*
                             player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
                             ElderWand(player)
+                             */
+                            if(cultural_language) {
+                                player.sendMessage("간첩을 색출할 때까지 사용할 수 없습니다")
+                            } else {
+                                player.sendMessage("발사체 버그를 수정하기 전까지 사용 할 수 없습니다")
+                            }
                         }
                     }
 
                     then("Hyperion") {
                         executes {
                             player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
-                            Hyperion(player)
+                            player.inventory.addItem(Hyperion())
                         }
                     }
                     then("HumanBow") {
                         executes {
                             player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
-                            HumanBow(player)
+                            player.inventory.addItem(HumanBow())
                         }
                     }
 
@@ -79,6 +89,23 @@ class Main : JavaPlugin(), Listener{
                         }
                     }
 
+                }
+
+                then("language") {
+                    then("cultural_language") {
+                        executes {
+                            cultural_language = true
+                            player.sendMessage("새로 지급되는 아이템은 이제부터" + "${ChatColor.LIGHT_PURPLE} 문화어" + "${ChatColor.WHITE}로 번역됩니다")
+                            player.sendMessage("${ChatColor.LIGHT_PURPLE}현재 번역률 100%")
+                        }
+                    }
+                    then("korean") {
+                        executes {
+                            cultural_language = false
+                            player.sendMessage("새로 지급되는 아이템은 이제부터" + "${ChatColor.LIGHT_PURPLE} 한국어" + "${ChatColor.WHITE}로 번역됩니다")
+                            player.sendMessage("${ChatColor.LIGHT_PURPLE}현재 번역률 100%")
+                        }
+                    }
                 }
 
             }

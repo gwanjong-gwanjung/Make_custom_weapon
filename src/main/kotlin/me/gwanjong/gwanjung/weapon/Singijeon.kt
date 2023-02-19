@@ -1,7 +1,7 @@
 package me.gwanjong.gwanjung.weapon
 
-import me.gwanjong.gwanjung.Main
 import me.gwanjong.gwanjung.MakeWeapon
+import me.gwanjong.gwanjung.cultural_language
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -18,18 +18,33 @@ import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
-import org.bukkit.metadata.FixedMetadataValue
 
 
 fun singijeon(player: Player){
 
-    val Lore = ArrayList<Component>()
-    val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","우클릭을 누르면 100개의 화살이 발사된다","좌클릭을 하면 화살이 삭제된다", 200 ,Lore)
-    Lore.add(Component.text("${ChatColor.BLUE}"))
-    Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
+    if(cultural_language) {
 
-    GuidedArrow.lore(Lore)
-    player.inventory.addItem(GuidedArrow)
+        val Lore = ArrayList<Component>()
+        val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","화살을 쏘면 100개의 미사일이 쏘아진다","왼쪽 누름을 하면 수령님이 화살을 삭제해주신다", 200 ,Lore)
+        Lore.add(Component.text("${ChatColor.BLUE}"))
+        Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
+
+        GuidedArrow.lore(Lore)
+        player.inventory.addItem(GuidedArrow)
+
+    } else {
+
+        val Lore = ArrayList<Component>()
+        val GuidedArrow = MakeWeapon(ItemStack(Material.BOW), "신기전","신기전","화살을 발사하면 100개의 화살이 발사된다","좌클릭을 하면 화살이 삭제된다", 200 ,Lore)
+        Lore.add(Component.text("${ChatColor.BLUE}"))
+        Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
+
+        GuidedArrow.lore(Lore)
+        player.inventory.addItem(GuidedArrow)
+
+    }
+
+
 
 }
 
@@ -49,7 +64,7 @@ class SingijeonEvent(): Listener {
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
 
-        if (event.action !in setOf(Action.LEFT_CLICK_AIR, Action.LEFT_CLICK_BLOCK, Action.RIGHT_CLICK_BLOCK, Action.RIGHT_CLICK_AIR)) return
+        if (event.action !in setOf(Action.LEFT_CLICK_AIR, Action.LEFT_CLICK_BLOCK)) return
 
         val player = event.player
         if(player.inventory.itemInMainHand.type != Material.BOW) return
@@ -58,6 +73,7 @@ class SingijeonEvent(): Listener {
         val displayName = item.itemMeta?.displayName ?: return
 
         if (displayName != "${ChatColor.LIGHT_PURPLE}신기전") return
+
 
         val arrowCount = countArrows(player)
         if (event.action == Action.LEFT_CLICK_AIR || event.action == Action.LEFT_CLICK_BLOCK) {

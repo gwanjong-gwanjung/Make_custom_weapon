@@ -2,6 +2,7 @@ package me.gwanjong.gwanjung.weapon
 
 import io.papermc.paper.event.entity.EntityMoveEvent
 import me.gwanjong.gwanjung.MakeWeapon
+import me.gwanjong.gwanjung.cultural_language
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -16,7 +17,8 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
-fun ElderWand(player: Player){
+fun ElderWand(player: Player) {
+
     val Lore = ArrayList<Component>()
     val ElderWand = MakeWeapon(ItemStack(Material.STICK), "딱총나무 지팡이","마법 지팡이","좌클릭시 전방으로 미사일을 발사한다","우클릭시 전방으로 화염구를 발사한다", 60,Lore)
     Lore.add(Component.text("해리 포터 시리즈의 죽음의 성물 중 하나"))
@@ -30,7 +32,7 @@ fun ElderWand(player: Player){
 
 }
 
-class ElderWandEvent():Listener{
+class ElderWandEvent():Listener {
     @EventHandler
     fun EladerWandEvent(event: PlayerInteractEvent) {
         val action = event.action
