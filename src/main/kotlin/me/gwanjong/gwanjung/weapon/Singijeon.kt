@@ -13,6 +13,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
@@ -116,6 +117,13 @@ class SingijeonEvent(): Listener {
             arrow.world.createExplosion(arrow.location, 5f) //화살의 착탄 위치에 폭발 생성
             arrow.remove() //화살 삭제
         }
+    }
+
+    @EventHandler
+    fun playerDeadEvent(event : EntityDeathEvent) {
+        if(event.entity.type != EntityType.PLAYER) return
+        val player = event.entity as Player
+        player.setCooldown(Material.BOW, 0)
     }
     /*
     최신코드

@@ -12,6 +12,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
@@ -82,6 +83,13 @@ class ElderWandEvent():Listener{
                 entity.remove()
             }
         }
+    }
+
+    @EventHandler
+    fun playerDeadEvent(event : EntityDeathEvent) {
+        if(event.entity.type != EntityType.PLAYER) return
+        val player = event.entity as Player
+        player.setCooldown(Material.STICK, 0)
     }
 
 }

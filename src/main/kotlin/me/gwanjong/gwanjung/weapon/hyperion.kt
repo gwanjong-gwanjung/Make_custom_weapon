@@ -4,11 +4,13 @@ import me.gwanjong.gwanjung.MakeWeapon
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
@@ -69,5 +71,12 @@ class HyperionEvent(): Listener {
         player.teleport(newLocation)
         player.world.createExplosion(player.location, 10f)
         player.setCooldown(player.inventory.itemInMainHand.type,100)
+    }
+
+    @EventHandler
+    fun playerDeadEvent(event : EntityDeathEvent) {
+        if(event.entity.type != EntityType.PLAYER) return
+        val player = event.entity as Player
+        player.setCooldown(Material.IRON_SWORD, 0)
     }
 }
