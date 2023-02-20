@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung
+package me.gwanjong.gwanjung.tool
 
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor

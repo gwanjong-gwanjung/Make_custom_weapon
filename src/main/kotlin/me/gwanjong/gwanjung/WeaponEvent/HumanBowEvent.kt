@@ -1,8 +1,5 @@
-package me.gwanjong.gwanjung.weapon
+package me.gwanjong.gwanjung.WeaponEvent
 
-import me.gwanjong.gwanjung.MakeWeapon
-import me.gwanjong.gwanjung.cultural_language
-import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Arrow
@@ -13,30 +10,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
-import org.bukkit.inventory.ItemStack
-
-
-fun HumanBow(): ItemStack {
-
-
-    if(cultural_language) {
-        val Lore = ArrayList<Component>()
-        val HumanBow = MakeWeapon(ItemStack(Material.BOW), "동무 미사일을 쏘는 무기","미사일","이 미사일을 혁명적이게 사용하면 탄두가 발사된 위치에 본인이 축지법을 써 이동한다","능력 사용 후 수령님의 은혜 시간 3초가 주어진다", 10000,Lore)
-        Lore.add(Component.text("${ChatColor.BLUE}"))
-        Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
-        HumanBow.lore(Lore)
-        return HumanBow
-
-    } else {
-        val Lore = ArrayList<Component>()
-        val HumanBow = MakeWeapon(ItemStack(Material.BOW), "인간활","활","이 활로 화살을 발사하면 화살이 발사된 위치에 자신이 텔레포트된다","능력 사용 후 무적타임 3초가 주어진다", 10000,Lore)
-        Lore.add(Component.text("${ChatColor.BLUE}"))
-        Lore.add(Component.text("${ChatColor.BLUE}무기 아이템"))
-        HumanBow.lore(Lore)
-        return HumanBow
-    }
-
-}
 
 class HumanBowEvent(): Listener {
 
@@ -69,6 +42,7 @@ class HumanBowEvent(): Listener {
             player.noDamageTicks = 60
             arrow.world.createExplosion(arrow.location, 150f) //화살의 착탄 위치에 폭발 생성
             player.world.strikeLightning(arrow.location)
+            arrow.damage = 1000.0
             player.teleport(arrow)
 
             arrow.remove() //화살 삭제

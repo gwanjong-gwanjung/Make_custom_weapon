@@ -1,6 +1,6 @@
 name: custom_weapon
 main: me.gwanjong.gwanjung.Main
-version: 0.0.1
+version: 0.1.0
 api-version: '1.19'
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:1.8.10

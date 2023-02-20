@@ -1,3 +1,5 @@
+package me.gwanjong.gwanjung.tool
+
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
@@ -36,7 +38,7 @@ class ArmorCradle : Listener {
         fireBall?.velocity = Vector(0, 1, 0)
         fireBall?.direction = Vector(0, 1, 0)
 
-        Bukkit.getPluginManager().getPlugin("ArmorCradle")?.let {
+        Bukkit.getPluginManager().getPlugin("me.gwanjong.gwanjung.tool.ArmorCradle")?.let {
             Bukkit.getScheduler().runTaskLater(it, object : Runnable {
                 override fun run() {
                     checkForCollision(fireBall)
