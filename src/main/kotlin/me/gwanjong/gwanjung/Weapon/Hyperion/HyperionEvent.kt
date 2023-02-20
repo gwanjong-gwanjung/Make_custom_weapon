@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.WeaponEvent
+package me.gwanjong.gwanjung.Weapon.Hyperion
 
 import org.bukkit.ChatColor
 import org.bukkit.Material

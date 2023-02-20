@@ -1,11 +1,10 @@
-package me.gwanjong.gwanjung.Weapon
+package me.gwanjong.gwanjung.Weapon.Singijeon
 
 import me.gwanjong.gwanjung.cultural_language
 import me.gwanjong.gwanjung.tool.MakeWeapon
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 
@@ -32,7 +31,4 @@ fun Singijeon() : ItemStack{
         return GuidedArrow
 
     }
-
-
-
 }

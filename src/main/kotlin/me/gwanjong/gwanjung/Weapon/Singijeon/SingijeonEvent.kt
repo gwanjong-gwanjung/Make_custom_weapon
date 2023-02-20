@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.WeaponEvent
+package me.gwanjong.gwanjung.Weapon.Singijeon
 
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor

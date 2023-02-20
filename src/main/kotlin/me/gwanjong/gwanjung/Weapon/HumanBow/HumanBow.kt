@@ -1,18 +1,14 @@
-package me.gwanjong.gwanjung.Weapon
+package me.gwanjong.gwanjung.Weapon.HumanBow
 
-import me.gwanjong.gwanjung.Main
 import me.gwanjong.gwanjung.cultural_language
 import me.gwanjong.gwanjung.tool.MakeWeapon
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
-import org.bukkit.NamespacedKey
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.ShapedRecipe
 
 
 fun HumanBow(): ItemStack {
-
 
     if(cultural_language) {
         val Lore = ArrayList<Component>()

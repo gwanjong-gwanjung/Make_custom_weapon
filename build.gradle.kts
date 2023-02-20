@@ -12,10 +12,9 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT") //해당되는 버전을 입력
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
-    implementation("io.github.monun:kommand-api:3.1.0")
-    implementation("io.github.monun:tap-api:4.8.0")
-    implementation("io.github.monun:invfx-api:3.2.0")
+    implementation("io.github.monun:kommand-api:3.1.2")
+    implementation("io.github.monun:tap-api:4.9.1")
+    implementation("io.github.monun:invfx-api:3.3.0")
 
 
 }

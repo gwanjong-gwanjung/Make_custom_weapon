@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.WeaponEvent
+package me.gwanjong.gwanjung.Weapon.ElderWand
 
 import io.papermc.paper.event.entity.EntityMoveEvent
 import org.bukkit.ChatColor
