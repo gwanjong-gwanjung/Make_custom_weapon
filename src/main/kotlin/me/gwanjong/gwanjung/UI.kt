@@ -2,6 +2,10 @@ package me.gwanjong.gwanjung
 
 import io.github.monun.invfx.InvFX
 import io.github.monun.invfx.openFrame
+import me.gwanjong.gwanjung.Weapon.HumanBow.HumanBow
+import me.gwanjong.gwanjung.Weapon.HumanBow.HumanBowFrame
+import me.gwanjong.gwanjung.Weapon.Hyperion.Hyperion
+import me.gwanjong.gwanjung.Weapon.Hyperion.HyperionFrame
 import me.gwanjong.gwanjung.Weapon.Singijeon.Singijeon
 import me.gwanjong.gwanjung.Weapon.Singijeon.SingijeonFrame
 import me.gwanjong.gwanjung.Weapon.Singijeon.tntarrowFrame
@@ -31,6 +35,20 @@ fun mainFrame(player: Player){
             item = tntarrow
             onClick { clickEvent ->
                 tntarrowFrame().openFrame(player)
+            }
+        }
+
+        slot (2, 0) {
+            item = Hyperion()
+            onClick { clickEvent ->
+                HyperionFrame().openFrame(player)
+            }
+        }
+
+        slot (3, 0) {
+            item = HumanBow()
+            onClick { clickEvent ->
+                HumanBowFrame().openFrame(player)
             }
         }
 

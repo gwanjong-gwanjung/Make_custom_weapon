@@ -1,6 +1,5 @@
 package me.gwanjong.gwanjung.Weapon.Singijeon
 
-import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.GameMode
 import org.bukkit.Material
@@ -9,11 +8,9 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
 class SingijeonEvent(): Listener {
@@ -26,34 +23,6 @@ class SingijeonEvent(): Listener {
             }
         }
         return arrowCount
-    }
-
-    @EventHandler
-    fun onPlayerInteract(event: PlayerInteractEvent) {
-
-        if (event.action !in setOf(Action.LEFT_CLICK_AIR, Action.LEFT_CLICK_BLOCK)) return
-
-        val player = event.player
-        if(player.inventory.itemInMainHand.type != Material.BOW) return
-
-        val item = player.inventory.itemInMainHand
-        val displayName = item.itemMeta?.displayName ?: return
-
-        if (displayName != "${ChatColor.LIGHT_PURPLE}신기전") return
-
-
-        val arrowCount = countArrows(player)
-        if (event.action == Action.LEFT_CLICK_AIR || event.action == Action.LEFT_CLICK_BLOCK) {
-
-            for(world in Bukkit.getWorlds()) {
-                for(entity in world.entities) {
-                    if(entity is Arrow) {
-                        entity.remove()
-                    }
-                }
-            }
-            player.sendMessage("${ChatColor.LIGHT_PURPLE}화살이 제거되었습니다")
-        }
     }
 
     @EventHandler
