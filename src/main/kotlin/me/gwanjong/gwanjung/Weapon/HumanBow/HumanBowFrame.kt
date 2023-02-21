@@ -22,4 +22,5 @@ class HumanBowFrame() : MakeRecipeFrame() {
 
         return item
     }
+
 }
