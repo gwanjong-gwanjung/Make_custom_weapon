@@ -35,6 +35,7 @@ class Main : JavaPlugin(), Listener{
         logger.info("        plugin is loaded      ")
         logger.info("==============================")
 
+
     }
 
     private fun setupCommands() = kommand {

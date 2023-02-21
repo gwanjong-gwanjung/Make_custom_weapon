@@ -14,7 +14,7 @@ import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.util.Vector
 
 
-//개발중
+//나중에
 class ArmorCradle : Listener {
 
     @EventHandler

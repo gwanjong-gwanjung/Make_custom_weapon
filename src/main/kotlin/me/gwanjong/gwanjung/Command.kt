@@ -20,6 +20,13 @@ object Command {
             executes {
                 player.sendMessage("얻을 아이템을 정하세요")
             }
+
+            then("inventory") {
+                executes {
+                    mainFrame(player)
+                }
+            }
+
             then("give") {
 
                 then("ElderWand") {
@@ -77,6 +84,7 @@ object Command {
 
 
             then("language") {
+
                 /*then("cultural_language") {
                     executes {
                         cultural_language = true
@@ -84,8 +92,8 @@ object Command {
                         player.sendMessage("${ChatColor.LIGHT_PURPLE}현재 번역률 100%")
                     }
                 }
-
                  */
+
                 then("korean") {
                     executes {
                         cultural_language = false
