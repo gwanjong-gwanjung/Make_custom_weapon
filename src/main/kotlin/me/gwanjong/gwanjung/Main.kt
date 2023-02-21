@@ -8,7 +8,6 @@ import me.gwanjong.gwanjung.Weapon.Hyperion.HyperionEvent
 import me.gwanjong.gwanjung.Weapon.Hyperion.HyperionRecipe
 import me.gwanjong.gwanjung.Weapon.Singijeon.SingijeonEvent
 import me.gwanjong.gwanjung.Weapon.Singijeon.SingijeonRecipe
-import org.bukkit.Bukkit
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -20,10 +19,11 @@ class Main : JavaPlugin(), Listener{
 
         cultural_language = false
 
-        Bukkit.getPluginManager().registerEvents(ElderWandEvent(), this)
-        Bukkit.getPluginManager().registerEvents(HyperionEvent(), this)
-        Bukkit.getPluginManager().registerEvents(SingijeonEvent(), this)
-        Bukkit.getPluginManager().registerEvents(HumanBowEvent(), this)
+        server.pluginManager.registerEvents(Event(), this)
+        server.pluginManager.registerEvents(ElderWandEvent(), this)
+        server.pluginManager.registerEvents(HyperionEvent(), this)
+        server.pluginManager.registerEvents(SingijeonEvent(), this)
+        server.pluginManager.registerEvents(HumanBowEvent(), this)
 
         HumanBowRecipe(server)
         HyperionRecipe(server)
