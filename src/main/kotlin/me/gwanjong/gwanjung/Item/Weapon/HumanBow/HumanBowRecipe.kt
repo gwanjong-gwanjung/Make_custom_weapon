@@ -1,8 +1,11 @@
-package me.gwanjong.gwanjung.Weapon.HumanBow
+package me.gwanjong.gwanjung.Item.Weapon.HumanBow
 
+import me.gwanjong.gwanjung.UI.BowUI
+import me.gwanjong.gwanjung.tool.MakeRecipeFrame
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.Server
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
@@ -35,3 +38,29 @@ fun HumanBowRecipe(server: Server) {
         }
     )
 }
+
+class HumanBowFrame() : MakeRecipeFrame() {
+
+    val head = ItemStack(Material.PLAYER_HEAD)
+
+    override fun setItem(): ItemStack {
+        return HumanBow()
+    }
+
+    override fun recipe(): Array<ItemStack> {
+
+        val item = arrayOf(
+            head, head, head,
+            head, ItemStack(Material.BOW), head,
+            head, head, head
+        )
+
+        return item
+    }
+
+    override fun back(player: Player) {
+        BowUI(player)
+    }
+
+}
+

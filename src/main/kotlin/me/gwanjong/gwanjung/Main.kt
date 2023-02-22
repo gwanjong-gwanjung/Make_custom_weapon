@@ -1,13 +1,13 @@
 package me.gwanjong.gwanjung
 
 import io.github.monun.kommand.kommand
-import me.gwanjong.gwanjung.Weapon.ElderWand.ElderWandEvent
-import me.gwanjong.gwanjung.Weapon.HumanBow.HumanBowEvent
-import me.gwanjong.gwanjung.Weapon.HumanBow.HumanBowRecipe
-import me.gwanjong.gwanjung.Weapon.Hyperion.HyperionEvent
-import me.gwanjong.gwanjung.Weapon.Hyperion.HyperionRecipe
-import me.gwanjong.gwanjung.Weapon.Singijeon.SingijeonEvent
-import me.gwanjong.gwanjung.Weapon.Singijeon.SingijeonRecipe
+import me.gwanjong.gwanjung.Item.Weapon.ElderWand.ElderWandEvent
+import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBowEvent
+import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBowRecipe
+import me.gwanjong.gwanjung.Item.Weapon.Hyperion.HyperionEvent
+import me.gwanjong.gwanjung.Item.Weapon.Hyperion.HyperionRecipe
+import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonEvent
+import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonRecipe
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 

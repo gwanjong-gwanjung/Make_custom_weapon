@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.HumanBow
+package me.gwanjong.gwanjung.Item.Weapon.HumanBow
 
 import me.gwanjong.gwanjung.cultural_language
 import me.gwanjong.gwanjung.tool.MakeWeapon

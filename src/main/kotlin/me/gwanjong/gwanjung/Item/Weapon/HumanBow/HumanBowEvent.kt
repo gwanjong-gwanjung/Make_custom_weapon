@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.HumanBow
+package me.gwanjong.gwanjung.Item.Weapon.HumanBow
 
 import org.bukkit.ChatColor
 import org.bukkit.Material

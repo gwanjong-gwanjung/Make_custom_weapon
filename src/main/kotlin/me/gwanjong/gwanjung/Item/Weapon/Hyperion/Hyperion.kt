@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.Hyperion
+package me.gwanjong.gwanjung.Item.Weapon.Hyperion
 
 import me.gwanjong.gwanjung.cultural_language
 import me.gwanjong.gwanjung.tool.MakeWeapon

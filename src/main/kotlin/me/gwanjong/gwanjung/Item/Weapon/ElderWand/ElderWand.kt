@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.ElderWand
+package me.gwanjong.gwanjung.Item.Weapon.ElderWand
 
 import me.gwanjong.gwanjung.tool.MakeWeapon
 import net.kyori.adventure.text.Component

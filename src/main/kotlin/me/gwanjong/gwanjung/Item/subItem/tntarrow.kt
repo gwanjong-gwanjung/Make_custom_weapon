@@ -1,43 +1,26 @@
-package me.gwanjong.gwanjung.Weapon.Singijeon
+package me.gwanjong.gwanjung.Item.subItem
 
+import me.gwanjong.gwanjung.UI.SubItemUI
 import me.gwanjong.gwanjung.tool.MakeRecipeFrame
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-class SingijeonFrame() : MakeRecipeFrame() {
-
+fun tntarrow() : ItemStack{
     val tntarrow = ItemStack(Material.ARROW).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}폭발화살"))
         }
     }
 
-    override fun setItem(): ItemStack {
-        return Singijeon()
-    }
-
-    override fun recipe(): Array<ItemStack> {
-
-        val item = arrayOf(
-            tntarrow, tntarrow, tntarrow,
-            tntarrow, Singijeon(), tntarrow,
-            tntarrow, tntarrow, tntarrow
-        )
-
-        return item
-    }
+    return tntarrow
 }
 
 class tntarrowFrame() : MakeRecipeFrame() {
 
-    val tntarrow = ItemStack(Material.ARROW).apply {
-        itemMeta = itemMeta.apply {
-            displayName(Component.text("${ChatColor.LIGHT_PURPLE}폭발화살"))
-        }
-    }
-
+    val tntarrow = tntarrow()
     val arrow = ItemStack(Material.ARROW)
 
     override fun setItem(): ItemStack {
@@ -54,4 +37,9 @@ class tntarrowFrame() : MakeRecipeFrame() {
 
         return item
     }
+
+    override fun back(player: Player) {
+        SubItemUI(player)
+    }
+
 }

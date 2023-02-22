@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.Hyperion
+package me.gwanjong.gwanjung.Item.Weapon.Hyperion
 
 import org.bukkit.ChatColor
 import org.bukkit.Material

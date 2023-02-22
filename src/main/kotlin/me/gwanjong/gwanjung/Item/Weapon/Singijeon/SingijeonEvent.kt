@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.Singijeon
+package me.gwanjong.gwanjung.Item.Weapon.Singijeon
 
 import org.bukkit.ChatColor
 import org.bukkit.GameMode
@@ -44,6 +44,7 @@ class SingijeonEvent(): Listener {
         val arrowCount = countArrows(player)
 
         if (player.gameMode == GameMode.SURVIVAL || player.gameMode == GameMode.ADVENTURE) {
+
             if (arrowCount < 100) {
                 player.sendMessage("${ChatColor.LIGHT_PURPLE}화살이 부족합니다")
                 return

@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung.Weapon.Singijeon
+package me.gwanjong.gwanjung.Item.Weapon.Singijeon
 
 import me.gwanjong.gwanjung.cultural_language
 import me.gwanjong.gwanjung.tool.MakeWeapon

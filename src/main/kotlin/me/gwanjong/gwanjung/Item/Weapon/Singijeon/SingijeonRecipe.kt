@@ -1,10 +1,13 @@
-package me.gwanjong.gwanjung.Weapon.Singijeon
+package me.gwanjong.gwanjung.Item.Weapon.Singijeon
 
+import me.gwanjong.gwanjung.UI.BowUI
+import me.gwanjong.gwanjung.tool.MakeRecipeFrame
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.Server
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
@@ -45,5 +48,34 @@ fun SingijeonRecipe(server: Server) {
             setIngredient('B', ItemStack(Material.BOW))
         }
     )
-
 }
+
+
+class SingijeonFrame() : MakeRecipeFrame() {
+
+    val tntarrow = ItemStack(Material.ARROW).apply {
+        itemMeta = itemMeta.apply {
+            displayName(Component.text("${ChatColor.LIGHT_PURPLE}폭발화살"))
+        }
+    }
+
+    override fun setItem(): ItemStack {
+        return Singijeon()
+    }
+
+    override fun recipe(): Array<ItemStack> {
+
+        val item = arrayOf(
+            tntarrow, tntarrow, tntarrow,
+            tntarrow, Singijeon(), tntarrow,
+            tntarrow, tntarrow, tntarrow
+        )
+
+        return item
+    }
+
+    override fun back(player: Player) {
+        BowUI(player)
+    }
+}
+

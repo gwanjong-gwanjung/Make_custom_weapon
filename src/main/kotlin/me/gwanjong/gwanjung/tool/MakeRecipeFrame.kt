@@ -3,7 +3,7 @@ package me.gwanjong.gwanjung.tool
 import io.github.monun.invfx.InvFX
 import io.github.monun.invfx.frame.InvFrame
 import io.github.monun.invfx.openFrame
-import me.gwanjong.gwanjung.mainFrame
+import me.gwanjong.gwanjung.UI.MainUI
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -41,9 +41,7 @@ open class MakeRecipeFrame() {
                 item = next
 
                 onClick { clickEvent ->
-                    clickEvent.whoClicked.closeInventory()
-                    val player = clickEvent.whoClicked as Player
-                    mainFrame(player)
+                    back(clickEvent.whoClicked as Player)
                 }
 
             }
@@ -57,6 +55,10 @@ open class MakeRecipeFrame() {
         setItem()
         MakeRecipeFrame()
         player.openFrame(MakeRecipeFrame())
+    }
+
+    open fun back(player: Player) {
+        MainUI(player)
     }
 
     open fun recipe(): Array<ItemStack> {

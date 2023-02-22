@@ -1,23 +1,19 @@
-package me.gwanjong.gwanjung
+package me.gwanjong.gwanjung.UI
 
 import io.github.monun.invfx.InvFX
+import io.github.monun.invfx.openFrame
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBow
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBowFrame
-import me.gwanjong.gwanjung.Item.Weapon.Hyperion.Hyperion
-import me.gwanjong.gwanjung.Item.Weapon.Hyperion.HyperionFrame
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonFrame
-import me.gwanjong.gwanjung.Item.subItem.tntarrow
-import me.gwanjong.gwanjung.Item.subItem.tntarrowFrame
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-fun mainFrame(player: Player){
+fun BowUI(player: Player) {
 
-
-    val subitem = InvFX.frame(1, Component.text("Weapon")) {
+    val BowUI = InvFX.frame(1, Component.text("Bow")) {
 
         slot (0, 0) {
             item = Singijeon()
@@ -27,41 +23,28 @@ fun mainFrame(player: Player){
         }
 
         slot (1, 0) {
-            val tntarrow = tntarrow()
-
-            item = tntarrow
-            onClick { clickEvent ->
-                tntarrowFrame().openFrame(player)
-            }
-        }
-
-        slot (2, 0) {
-            item = Hyperion()
-            onClick { clickEvent ->
-                HyperionFrame().openFrame(player)
-            }
-        }
-
-        slot (3, 0) {
             item = HumanBow()
             onClick { clickEvent ->
                 HumanBowFrame().openFrame(player)
             }
         }
 
+
         slot (8, 0) {
 
-            val next = ItemStack(Material.BARRIER).apply {
+            val next = ItemStack(Material.ARROW).apply {
                 itemMeta = itemMeta.apply {
-                    displayName(Component.text("닫기"))
+                    displayName(Component.text("뒤로가기"))
                 }
             }
 
             item = next
             onClick { clickEvent ->
-                clickEvent.whoClicked.closeInventory()
+                MainUI(player)
             }
         }
 
     }
+    player.openFrame(BowUI)
+
 }

@@ -1,5 +1,6 @@
 package me.gwanjong.gwanjung
 
+import me.gwanjong.gwanjung.UI.MainUI
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -16,7 +17,7 @@ class Event : Listener {
         val item = event.item ?: return
 
         if(item.type == Material.BOOK) {
-            mainFrame(player)
+            MainUI(player)
         }
 
     }

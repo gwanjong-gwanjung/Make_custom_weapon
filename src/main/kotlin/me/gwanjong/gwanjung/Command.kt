@@ -3,9 +3,10 @@ package me.gwanjong.gwanjung
 import io.github.monun.kommand.KommandArgument
 import io.github.monun.kommand.PluginKommand
 import io.github.monun.kommand.getValue
-import me.gwanjong.gwanjung.Weapon.HumanBow.HumanBow
-import me.gwanjong.gwanjung.Weapon.Hyperion.Hyperion
-import me.gwanjong.gwanjung.Weapon.Singijeon.Singijeon
+import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBow
+import me.gwanjong.gwanjung.Item.Weapon.Hyperion.Hyperion
+import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
+import me.gwanjong.gwanjung.UI.MainUI
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
@@ -23,7 +24,7 @@ object Command {
 
             then("inventory") {
                 executes {
-                    mainFrame(player)
+                    MainUI(player)
                 }
             }
 
