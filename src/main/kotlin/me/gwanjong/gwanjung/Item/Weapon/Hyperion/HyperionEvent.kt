@@ -53,7 +53,7 @@ class HyperionEvent(): Listener {
             player.teleport(newLocation)
             player.world.createExplosion(player.location, 10f)
             player.setCooldown(player.inventory.itemInMainHand.type,100)
-        }else { return }
+        } else { return }
 
     }
 
