@@ -1,5 +1,6 @@
 package me.gwanjong.gwanjung.Item.Weapon.ICBM
 
+import me.gwanjong.gwanjung.tool.Timer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Location
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerChatEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.meta.ItemMeta
@@ -53,8 +55,8 @@ class ICBMEvent : Listener {
             val player = event.player
             val location = player.location
 
-            for (i in 0..50) {
-                val boom10 = player.world.spawnEntity(Location(location.world, location.x, location.y + 50 - i, location.z), EntityType.ARMOR_STAND)
+            for (i in 0..100) {
+                val boom10 = player.world.spawnEntity(Location(location.world, location.x, location.y + 100 - i, location.z), EntityType.ARMOR_STAND)
                 player.world.createExplosion(boom10.location, boom)
             }
 
@@ -63,13 +65,10 @@ class ICBMEvent : Listener {
                 val boom1 = player.world.spawnEntity(Location(location.world, location.x + i, location.y , location.z), EntityType.ARMOR_STAND) as LivingEntity
                 val boom2 = player.world.spawnEntity(Location(location.world, location.x + i, location.y , location.z + i), EntityType.ARMOR_STAND) as LivingEntity
                 val boom3 = player.world.spawnEntity(Location(location.world, location.x + i, location.y , location.z - i), EntityType.ARMOR_STAND) as LivingEntity
-
                 val boom4 = player.world.spawnEntity(Location(location.world, location.x, location.y , location.z), EntityType.ARMOR_STAND) as LivingEntity
-
                 val boom5 = player.world.spawnEntity(Location(location.world, location.x - i, location.y , location.z), EntityType.ARMOR_STAND) as LivingEntity
                 val boom6 = player.world.spawnEntity(Location(location.world, location.x - i, location.y , location.z + i), EntityType.ARMOR_STAND) as LivingEntity
                 val boom7 = player.world.spawnEntity(Location(location.world, location.x - i, location.y , location.z - i), EntityType.ARMOR_STAND) as LivingEntity
-
                 val boom8 = player.world.spawnEntity(Location(location.world, location.x, location.y , location.z - i), EntityType.ARMOR_STAND) as LivingEntity
                 val boom9 = player.world.spawnEntity(Location(location.world, location.x, location.y , location.z + i), EntityType.ARMOR_STAND) as LivingEntity
 
@@ -108,16 +107,25 @@ class ICBMEvent : Listener {
         targetPlayer?.sendTitle("So Long.......", "${ChatColor.RED}당신은 ${player.name}님의 타겟이 되었습니다", 40, 200, 40)
         player.setCooldown(Material.STICK, 100000)
 
-        val plugin = Bukkit.getPluginManager().getPlugin("custom_weapon")
-        val scheduler = plugin!!.server.scheduler
-        scheduler.scheduleSyncDelayedTask(plugin, {
 
-            boom()
-            target = ""
+        class time : Timer() {
+            override fun Time(): Int { return 280 }
+            override fun player(): Player? { return targetPlayer }
+            override fun run() {
+                boom()
+                target = ""
+            }
+        }
 
-            }, 280L
-        )
-
+        time()
 
     }
 }
+
+@EventHandler
+fun playerDeadEvent(event : EntityDeathEvent) {
+    if(event.entity.type != EntityType.PLAYER) return
+    val player = event.entity as Player
+    player.setCooldown(Material.STICK, 0)
+}
+
