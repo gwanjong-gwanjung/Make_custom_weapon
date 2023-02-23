@@ -58,7 +58,7 @@ class ICBMEvent : Listener {
                 player.world.createExplosion(boom10.location, boom)
             }
 
-            for (i in 0..50) {
+            for (i in 0..70) {
 
                 val boom1 = player.world.spawnEntity(Location(location.world, location.x + i, location.y , location.z), EntityType.ARMOR_STAND) as LivingEntity
                 val boom2 = player.world.spawnEntity(Location(location.world, location.x + i, location.y , location.z + i), EntityType.ARMOR_STAND) as LivingEntity
