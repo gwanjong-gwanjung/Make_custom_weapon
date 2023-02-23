@@ -5,6 +5,7 @@ import io.github.monun.kommand.PluginKommand
 import io.github.monun.kommand.getValue
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBow
 import me.gwanjong.gwanjung.Item.Weapon.Hyperion.Hyperion
+import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBM
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
 import me.gwanjong.gwanjung.UI.MainUI
 import org.bukkit.ChatColor
@@ -30,20 +31,6 @@ object Command {
 
             then("give") {
 
-                then("ElderWand") {
-                    executes {
-                        /*
-                        player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
-                        ElderWand(player)
-                         */
-                        if(cultural_language) {
-                            player.sendMessage("간첩을 색출할 때까지 사용할 수 없습니다")
-                        } else {
-                            player.sendMessage("발사체 버그를 수정하기 전까지 사용 할 수 없습니다")
-                        }
-                    }
-                }
-
                 then("Hyperion") {
                     executes {
                         player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
@@ -63,7 +50,15 @@ object Command {
                         player.inventory.addItem(Singijeon())
                     }
                 }
+                then("ICBM") {
+                    executes {
+                        player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
+                        player.inventory.addItem(ICBM())
+                    }
+                }
             }
+
+
 
             then("develop") {
                 then("setcooltime") {

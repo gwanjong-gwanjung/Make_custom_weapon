@@ -15,6 +15,7 @@ fun MakeWeapon(itemStack: ItemStack, weapon_Name: String, weapon_Type:String, ba
             lore(lore)
         }
     }
+
     return item
 
 }

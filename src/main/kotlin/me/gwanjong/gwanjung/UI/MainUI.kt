@@ -39,6 +39,20 @@ fun MainUI(player:Player) {
         }
 
         slot (2, 0) {
+            val subItem = ItemStack(Material.STICK).apply {
+                itemMeta = itemMeta.apply {
+                    displayName(Component.text("기타 무기"))
+                }
+            }
+
+            item = subItem
+
+            onClick { clickEvent ->
+                WandUI(player)
+            }
+        }
+
+        slot (3, 0) {
             val subItem = ItemStack(Material.NETHER_STAR).apply {
                 itemMeta = itemMeta.apply {
                     displayName(Component.text("기타 아이템"))

@@ -6,6 +6,7 @@ import io.github.monun.invfx.openFrame
 import me.gwanjong.gwanjung.UI.MainUI
 import net.kyori.adventure.text.Component
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -15,7 +16,16 @@ open class MakeRecipeFrame() {
     open fun MakeRecipeFrame() : InvFrame {
         val frame = InvFX.frame(6, Component.text("${setItem().itemMeta.displayName} ${ChatColor.BLACK}조합법")) {
 
-            slot (7, 2) { item = setItem() } //메인 아이템
+            slot (7, 2) {
+                item = setItem()
+
+                onClick { clickEvent ->
+                    val player = clickEvent.whoClicked as Player
+                    if(player.gameMode != GameMode.CREATIVE) return@onClick
+                    player.inventory.addItem(setItem())
+                }
+
+            }
 
             slot (1, 1) { item = recipe()[0]}
             slot (2, 1) { item = recipe()[1]}
@@ -64,13 +74,11 @@ open class MakeRecipeFrame() {
     open fun recipe(): Array<ItemStack> {
         val air = ItemStack(Material.AIR)
 
-        val item = arrayOf(
+        return arrayOf(
             air, air, air,
             air, air, air,
             air, air, air
         )
-
-        return item
     }
 
     open fun setItem() : ItemStack {
