@@ -39,9 +39,9 @@ fun HumanBowRecipe(server: Server) {
     )
 }
 
-class HumanBowFrame() : MakeRecipeFrame() {
+class HumanBowFrame : MakeRecipeFrame() {
 
-    val head = ItemStack(Material.PLAYER_HEAD)
+    private val head = ItemStack(Material.PLAYER_HEAD)
 
     override fun setItem(): ItemStack {
         return HumanBow()

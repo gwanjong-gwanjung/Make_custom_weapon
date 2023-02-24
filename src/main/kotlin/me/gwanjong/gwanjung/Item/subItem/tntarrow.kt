@@ -18,10 +18,10 @@ fun tntarrow() : ItemStack{
     return tntarrow
 }
 
-class tntarrowFrame() : MakeRecipeFrame() {
+class tntarrowFrame : MakeRecipeFrame() {
 
-    val tntarrow = tntarrow()
-    val arrow = ItemStack(Material.ARROW)
+    private val tntarrow = tntarrow()
+    private val arrow = ItemStack(Material.ARROW)
 
     override fun setItem(): ItemStack {
         return tntarrow

@@ -8,16 +8,16 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-class BodyFrame() : MakeRecipeFrame() {
+class BodyFrame : MakeRecipeFrame() {
 
-    val body = ItemStack(Material.IRON_BLOCK).apply {
+    private val body = ItemStack(Material.IRON_BLOCK).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}몸체"))
         }
     }
 
-    val coal = ItemStack(Material.COAL_BLOCK)
-    val iron = ItemStack(Material.IRON_BLOCK)
+    private val coal = ItemStack(Material.COAL_BLOCK)
+    private val iron = ItemStack(Material.IRON_BLOCK)
 
     override fun setItem(): ItemStack {
         return body

@@ -7,6 +7,7 @@ import me.gwanjong.gwanjung.Item.Weapon.Hyperion.HyperionEvent
 import me.gwanjong.gwanjung.Item.Weapon.Hyperion.HyperionRecipe
 import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBM
 import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBMEvent
+import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBMRecipe
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonEvent
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonRecipe
 import org.bukkit.event.Listener
@@ -29,6 +30,7 @@ class Main : JavaPlugin(), Listener{
         HumanBowRecipe(server)
         HyperionRecipe(server)
         SingijeonRecipe(server)
+        ICBMRecipe(server)
 
         setupCommands()
 

@@ -39,11 +39,7 @@ class ArmorCradle : Listener {
         fireBall?.direction = Vector(0, 1, 0)
 
         Bukkit.getPluginManager().getPlugin("me.gwanjong.gwanjung.tool.ArmorCradle")?.let {
-            Bukkit.getScheduler().runTaskLater(it, object : Runnable {
-                override fun run() {
-                    checkForCollision(fireBall)
-                }
-            }, 20)
+            Bukkit.getScheduler().runTaskLater(it, Runnable { checkForCollision(fireBall) }, 20)
         }
     }
 

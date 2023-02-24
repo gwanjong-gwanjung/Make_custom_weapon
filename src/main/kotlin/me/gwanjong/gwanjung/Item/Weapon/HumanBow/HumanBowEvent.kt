@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 
-class HumanBowEvent(): Listener {
+class HumanBowEvent : Listener {
 
     @EventHandler
     fun onProjectileLaunch(event: EntityShootBowEvent) {

@@ -13,7 +13,6 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerChatEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.inventory.meta.ItemMeta
 
 var input = false
 var target = ""
@@ -27,7 +26,7 @@ class ICBMEvent : Listener {
 
         val player = event.player
         val item = event.item ?: return
-        val itemMeta = item.itemMeta as? ItemMeta ?: return
+        val itemMeta = item.itemMeta ?: return
         if(event.player.inventory.itemInMainHand.itemMeta == null) return
         if (itemMeta.displayName != "${ChatColor.LIGHT_PURPLE}ICBM") return
 
@@ -71,8 +70,9 @@ class ICBMEvent : Listener {
         targetPlayer?.sendTitle("So Long.......", "${ChatColor.RED}당신은 ${player.name}님의 타겟이 되었습니다", 40, 200, 40)
         player.setCooldown(Material.STICK, 100000)
 
+        val timer : Timer
 
-        class time : Timer() {
+        class Time : Timer() {
             override fun Time(): Int { return 280 }
             override fun player(): Player? { return targetPlayer }
             override fun run() {
@@ -81,7 +81,7 @@ class ICBMEvent : Listener {
             }
         }
 
-        time()
+        Time()
 
     }
 }

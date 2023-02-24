@@ -11,7 +11,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-open class MakeRecipeFrame() {
+open class MakeRecipeFrame {
 
     open fun MakeRecipeFrame() : InvFrame {
         val frame = InvFX.frame(6, Component.text("${setItem().itemMeta.displayName} ${ChatColor.BLACK}조합법")) {

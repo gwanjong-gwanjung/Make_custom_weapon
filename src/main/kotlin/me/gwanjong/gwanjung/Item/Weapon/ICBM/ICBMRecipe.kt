@@ -94,27 +94,27 @@ fun ICBMRecipe(server: Server) {
     )
 }
 
-class ICBMFrame() : MakeRecipeFrame() {
+class ICBMFrame : MakeRecipeFrame() {
 
-    val warhead = ItemStack(Material.TNT).apply {
+    private val warhead = ItemStack(Material.TNT).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}탄두"))
         }
     }
 
-    val body = ItemStack(Material.IRON_BLOCK).apply {
+    private val body = ItemStack(Material.IRON_BLOCK).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}몸체"))
         }
     }
 
-    val engine = ItemStack(Material.POINTED_DRIPSTONE).apply {
+    private val engine = ItemStack(Material.POINTED_DRIPSTONE).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}엔진"))
         }
     }
 
-    val air = ItemStack(Material.AIR)
+    private val air = ItemStack(Material.AIR)
 
     override fun setItem(): ItemStack {
         return ICBM()

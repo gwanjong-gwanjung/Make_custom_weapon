@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.inventory.ItemStack
 
-class SingijeonEvent(): Listener {
+class SingijeonEvent : Listener {
 
     private fun countArrows(player: Player): Int {
         var arrowCount = 0

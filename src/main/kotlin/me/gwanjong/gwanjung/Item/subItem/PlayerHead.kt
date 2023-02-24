@@ -6,11 +6,11 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-class PlayerHeadFrame() : MakeRecipeFrame() {
+class PlayerHeadFrame : MakeRecipeFrame() {
 
-    val redstone = ItemStack(Material.REDSTONE)
-    val bone = ItemStack(Material.BONE)
-    val flesh = ItemStack(Material.ROTTEN_FLESH)
+    private val redstone = ItemStack(Material.REDSTONE)
+    private val bone = ItemStack(Material.BONE)
+    private val flesh = ItemStack(Material.ROTTEN_FLESH)
 
     override fun setItem(): ItemStack {
         return ItemStack(Material.PLAYER_HEAD)

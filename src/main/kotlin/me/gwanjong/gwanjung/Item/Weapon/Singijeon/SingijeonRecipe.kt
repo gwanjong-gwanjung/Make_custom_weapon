@@ -51,9 +51,9 @@ fun SingijeonRecipe(server: Server) {
 }
 
 
-class SingijeonFrame() : MakeRecipeFrame() {
+class SingijeonFrame : MakeRecipeFrame() {
 
-    val tntarrow = ItemStack(Material.ARROW).apply {
+    private val tntarrow = ItemStack(Material.ARROW).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}폭발화살"))
         }

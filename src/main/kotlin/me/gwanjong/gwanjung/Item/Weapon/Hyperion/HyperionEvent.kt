@@ -10,9 +10,8 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.inventory.meta.ItemMeta
 
-class HyperionEvent(): Listener {
+class HyperionEvent : Listener {
 
     @EventHandler
     fun onEntityDamage(event: EntityDamageEvent) {
@@ -38,7 +37,7 @@ class HyperionEvent(): Listener {
 
         val player = event.player
         val item = event.item ?: return
-        val itemMeta = item.itemMeta as? ItemMeta ?: return
+        val itemMeta = item.itemMeta ?: return
 
         if (itemMeta.displayName == "${ChatColor.LIGHT_PURPLE}Hyperion" || itemMeta.displayName == "${ChatColor.LIGHT_PURPLE}폭발적 축지법 칼") {
             val blockInFront = player.getTargetBlock(setOf(Material.AIR), 1)

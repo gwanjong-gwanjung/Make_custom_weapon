@@ -23,9 +23,9 @@ fun HyperionRecipe(server: Server) {
 
 }
 
-class HyperionFrame() : MakeRecipeFrame() {
+class HyperionFrame : MakeRecipeFrame() {
 
-    val tnt = ItemStack(Material.END_CRYSTAL)
+    private val tnt = ItemStack(Material.END_CRYSTAL)
 
     override fun setItem(): ItemStack {
         return Hyperion()

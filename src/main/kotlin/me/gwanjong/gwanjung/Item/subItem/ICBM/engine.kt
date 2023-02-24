@@ -9,15 +9,15 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 
-class EngineFrame() : MakeRecipeFrame() {
-    val engine = ItemStack(Material.POINTED_DRIPSTONE).apply {
+class EngineFrame : MakeRecipeFrame() {
+    private val engine = ItemStack(Material.POINTED_DRIPSTONE).apply {
         itemMeta = itemMeta.apply {
             displayName(Component.text("${ChatColor.LIGHT_PURPLE}엔진"))
         }
     }
 
-    val iron = ItemStack(Material.IRON_BLOCK)
-    val star = ItemStack(Material.NETHER_STAR)
+    private val iron = ItemStack(Material.IRON_BLOCK)
+    private val star = ItemStack(Material.NETHER_STAR)
 
     override fun setItem(): ItemStack {
         return engine
