@@ -43,7 +43,7 @@ fun ICBMRecipe(server: Server) {
                 "TTT"
             )
             setIngredient('T', ItemStack(Material.TNT))
-            setIngredient('A', ItemStack(Material.NETHER_STAR))
+            setIngredient('N', ItemStack(Material.NETHER_STAR))
         }
     )
 

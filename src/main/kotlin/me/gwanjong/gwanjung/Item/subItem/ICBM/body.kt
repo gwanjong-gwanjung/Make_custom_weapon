@@ -1,5 +1,6 @@
 package me.gwanjong.gwanjung.Item.subItem.ICBM
 
+import me.gwanjong.gwanjung.Item.DropItem.ElderGuardianEye
 import me.gwanjong.gwanjung.UI.SubItemUI
 import me.gwanjong.gwanjung.tool.MakeRecipeFrame
 import net.kyori.adventure.text.Component
@@ -27,7 +28,7 @@ class BodyFrame : MakeRecipeFrame() {
 
         val item = arrayOf(
             iron, coal, iron,
-            iron, coal, iron,
+            iron, ElderGuardianEye(), iron,
             iron, coal, iron
         )
 

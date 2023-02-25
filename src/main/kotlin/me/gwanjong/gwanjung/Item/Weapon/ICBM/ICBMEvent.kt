@@ -5,6 +5,7 @@ import me.gwanjong.gwanjung.tool.Timer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -28,7 +29,7 @@ class ICBMEvent : Listener {
         val item = event.item ?: return
         val itemMeta = item.itemMeta ?: return
         if(event.player.inventory.itemInMainHand.itemMeta == null) return
-        if (itemMeta.displayName != "${ChatColor.LIGHT_PURPLE}ICBM") return
+        if (player.inventory.itemInMainHand.itemMeta.displayName != "${ChatColor.LIGHT_PURPLE}ICBM") return
 
         if(player.getCooldown(Material.STICK) != 0) {
             player.sendMessage("${ChatColor.RED}아직 발사 준비가 되지 않았습니다")
@@ -68,9 +69,7 @@ class ICBMEvent : Listener {
         player.sendMessage("${ChatColor.LIGHT_PURPLE}타겟이 ${targetPlayer?.name}으로 지정되었습니다")
 
         targetPlayer?.sendTitle("So Long.......", "${ChatColor.RED}당신은 ${player.name}님의 타겟이 되었습니다", 40, 200, 40)
-        player.setCooldown(Material.STICK, 100000)
-
-        val timer : Timer
+        player.setCooldown(Material.STICK, 5000)
 
         class Time : Timer() {
             override fun Time(): Int { return 280 }
@@ -79,17 +78,25 @@ class ICBMEvent : Listener {
                 Boom(targetPlayer!!.location, 20,100, 70)
                 target = ""
             }
+
+            override fun timerSound() {
+                targetPlayer!!.location.world.playSound(targetPlayer.location, Sound.BLOCK_ANVIL_LAND, 1F, 0.2F)
+            }
         }
 
         Time()
 
     }
+
+
+    @EventHandler
+    fun playerDeadEvent(event : EntityDeathEvent) {
+        if(event.entity.type != EntityType.PLAYER) return
+        val player = event.entity as Player
+        player.setCooldown(Material.STICK, 0)
+    }
+
 }
 
-@EventHandler
-fun playerDeadEvent(event : EntityDeathEvent) {
-    if(event.entity.type != EntityType.PLAYER) return
-    val player = event.entity as Player
-    player.setCooldown(Material.STICK, 0)
-}
+
 

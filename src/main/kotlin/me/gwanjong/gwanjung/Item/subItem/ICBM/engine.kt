@@ -1,5 +1,6 @@
 package me.gwanjong.gwanjung.Item.subItem.ICBM
 
+import me.gwanjong.gwanjung.Item.DropItem.WardenHeart
 import me.gwanjong.gwanjung.UI.SubItemUI
 import me.gwanjong.gwanjung.tool.MakeRecipeFrame
 import net.kyori.adventure.text.Component
@@ -17,7 +18,7 @@ class EngineFrame : MakeRecipeFrame() {
     }
 
     private val iron = ItemStack(Material.IRON_BLOCK)
-    private val star = ItemStack(Material.NETHER_STAR)
+    private val heart = WardenHeart()
 
     override fun setItem(): ItemStack {
         return engine
@@ -27,8 +28,8 @@ class EngineFrame : MakeRecipeFrame() {
 
         val item = arrayOf(
             iron, iron, iron,
-            iron, iron, iron,
-            iron, star, iron
+            iron, ItemStack(Material.DRAGON_BREATH), iron,
+            iron, heart, iron
         )
 
         return item

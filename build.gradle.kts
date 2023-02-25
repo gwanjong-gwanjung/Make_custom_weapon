@@ -15,7 +15,6 @@ dependencies {
     implementation("io.github.monun:kommand-api:3.1.2")
     implementation("io.github.monun:tap-api:4.9.1")
     implementation("io.github.monun:invfx-api:3.3.0")
-    implementation("com.mysql:mysql-connector-j:8.0.32")
 
 }
 

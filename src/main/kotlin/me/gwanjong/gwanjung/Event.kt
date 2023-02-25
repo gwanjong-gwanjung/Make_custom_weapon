@@ -1,10 +1,14 @@
 package me.gwanjong.gwanjung
 
+import me.gwanjong.gwanjung.Item.DropItem.ElderGuardianEye
+import me.gwanjong.gwanjung.Item.DropItem.WardenHeart
 import me.gwanjong.gwanjung.UI.MainUI
 import org.bukkit.Material
+import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 class Event : Listener {
@@ -20,6 +24,18 @@ class Event : Listener {
             MainUI(player)
         }
 
+    }
+
+    @EventHandler
+    fun WardenDeathEvent(event: EntityDeathEvent) {
+        if (event.entity.type != EntityType.WARDEN) return
+        event.entity.world.dropItem(event.entity.location, WardenHeart())
+    }
+
+    @EventHandler
+    fun ElderGuardianDeathEvent(event: EntityDeathEvent) {
+        if (event.entity.type != EntityType.ELDER_GUARDIAN) return
+        event.entity.world.dropItem(event.entity.location, ElderGuardianEye())
     }
 
 }

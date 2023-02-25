@@ -16,6 +16,7 @@ open class Timer {
             time++
             if((Time() - time)%20 == 0) {
                 player()?.sendMessage("${(Time() - time)/20}${message()}")
+                timerSound()
             }
             if (time == Time()) {
                 task.cancel()
@@ -33,5 +34,6 @@ open class Timer {
     open fun Time() : Int {return 0}
     open fun message(): String {return "초 남았습니다"}
     open fun run() {}
+    open fun timerSound() {}
 
 }
