@@ -4,6 +4,7 @@ import io.github.monun.kommand.KommandArgument
 import io.github.monun.kommand.PluginKommand
 import io.github.monun.kommand.getValue
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBow
+import me.gwanjong.gwanjung.Item.Weapon.HyperMonsterBow.HyperMonsterBow
 import me.gwanjong.gwanjung.Item.Weapon.Hyperion.Hyperion
 import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBM
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
@@ -41,6 +42,13 @@ object Command {
                     executes {
                         player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
                         player.inventory.addItem(HumanBow())
+                    }
+                }
+
+                then("HyperMonsterBow") {
+                    executes {
+                        player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
+                        player.inventory.addItem(HyperMonsterBow())
                     }
                 }
 

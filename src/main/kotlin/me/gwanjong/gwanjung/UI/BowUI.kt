@@ -4,6 +4,8 @@ import io.github.monun.invfx.InvFX
 import io.github.monun.invfx.openFrame
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBow
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBowFrame
+import me.gwanjong.gwanjung.Item.Weapon.HyperMonsterBow.HyperMonsterBow
+import me.gwanjong.gwanjung.Item.Weapon.HyperMonsterBow.HyperMonsterBowFrame
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonFrame
 import net.kyori.adventure.text.Component
@@ -26,6 +28,13 @@ fun BowUI(player: Player) {
             item = HumanBow()
             onClick { clickEvent ->
                 HumanBowFrame().openFrame(player)
+            }
+        }
+
+        slot (2, 0) {
+            item = HyperMonsterBow()
+            onClick { clickEvent ->
+                HyperMonsterBowFrame().openFrame(player)
             }
         }
 

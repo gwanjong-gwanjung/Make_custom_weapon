@@ -2,10 +2,7 @@ package me.gwanjong.gwanjung.Item.Weapon.ICBM
 
 import me.gwanjong.gwanjung.tool.Boom
 import me.gwanjong.gwanjung.tool.Timer
-import org.bukkit.Bukkit
-import org.bukkit.ChatColor
-import org.bukkit.Material
-import org.bukkit.Sound
+import org.bukkit.*
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -77,6 +74,7 @@ class ICBMEvent : Listener {
             override fun run() {
                 Boom(targetPlayer!!.location, 20,100, 70)
                 target = ""
+
             }
 
             override fun timerSound() {
@@ -85,7 +83,9 @@ class ICBMEvent : Listener {
         }
 
         Time()
-
+        if(event.player.gameMode == GameMode.SURVIVAL || event.player.gameMode == GameMode.ADVENTURE) {
+            player.inventory.removeItem(ICBM())
+        }
     }
 
 
