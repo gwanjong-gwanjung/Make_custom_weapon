@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
@@ -57,7 +58,7 @@ class HyperMonsterBowEvent : Listener {
         if (e.entity.scoreboardTags.contains("HyperMonsterBow")) {
             val arrow = e.entity as Arrow
             val world = arrow.world
-            val random = (0..1)
+            val random = (0..2)
 
             if(random.random() == 0) {
                 val creeper = world.spawnEntity(arrow.location, EntityType.CREEPER)
@@ -66,6 +67,10 @@ class HyperMonsterBowEvent : Listener {
             if(random.random() == 1) {
                 val creeper = world.spawnEntity(arrow.location, EntityType.ZOMBIE)
                 creeper.addScoreboardTag("HyperMonsterBowZombie")
+            }
+            if(random.random() == 1) {
+                val creeper = world.spawnEntity(arrow.location, EntityType.SKELETON)
+                creeper.addScoreboardTag("HyperMonsterBowSkeleton")
             }
         }
     }
@@ -83,9 +88,27 @@ class HyperMonsterBowEvent : Listener {
 
         if(entity.scoreboardTags.contains("HyperMonsterBowZombie")) {
             for(i in 0..5) {
-                world.spawnEntity(entity.location, EntityType.ZOMBIE)
+                val zombie = world.spawnEntity(entity.location, EntityType.ZOMBIE)
+                zombie.addScoreboardTag("HyperMonsterBowZombie")
             }
         }
     }
+
+    @EventHandler
+    fun EntityShootBowEvent(event: EntityShootBowEvent) {
+        val entity = event.entity
+        if(entity.type != EntityType.SKELETON) return
+
+        if(!entity.scoreboardTags.contains("HyperMonsterBowSkeleton")) return
+
+        event.isCancelled = true
+
+        for (i in 0..99) {
+            val arrow = entity.launchProjectile(Arrow::class.java)
+            arrow.damage = 1.0
+
+        }
+    }
+
 
 }

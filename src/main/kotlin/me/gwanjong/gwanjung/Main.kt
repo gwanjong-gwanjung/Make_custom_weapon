@@ -1,6 +1,8 @@
 package me.gwanjong.gwanjung
 
 import io.github.monun.kommand.kommand
+import me.gwanjong.gwanjung.Commands.EnchantCommand
+import me.gwanjong.gwanjung.Commands.WeaponCommand
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBowEvent
 import me.gwanjong.gwanjung.Item.Weapon.HumanBow.HumanBowRecipe
 import me.gwanjong.gwanjung.Item.Weapon.HyperMonsterBow.HyperMonsterBowEvent
@@ -44,6 +46,7 @@ class Main : JavaPlugin(), Listener{
     }
 
     private fun setupCommands() = kommand {
-        Command.register(this@Main, this)
+        WeaponCommand.register(this@Main, this)
+        EnchantCommand.register(this@Main, this)
     }
 }

@@ -1,4 +1,4 @@
-package me.gwanjong.gwanjung
+package me.gwanjong.gwanjung.Commands
 
 import io.github.monun.kommand.KommandArgument
 import io.github.monun.kommand.PluginKommand
@@ -8,21 +8,19 @@ import me.gwanjong.gwanjung.Item.Weapon.HyperMonsterBow.HyperMonsterBow
 import me.gwanjong.gwanjung.Item.Weapon.Hyperion.Hyperion
 import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBM
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
+import me.gwanjong.gwanjung.Main
 import me.gwanjong.gwanjung.UI.MainUI
+import me.gwanjong.gwanjung.cultural_language
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
-object Command {
+object WeaponCommand {
     private lateinit var plugin: Main
 
     internal fun register(plugin: Main, kommand: PluginKommand) {
-        this.plugin = plugin
+        WeaponCommand.plugin = plugin
 
         kommand.register("weapon") {
-
-            executes {
-                player.sendMessage("얻을 아이템을 정하세요")
-            }
 
             then("inventory") {
                 executes {

@@ -18,6 +18,7 @@ class EventTip {
 
         if (itemMeta.displayName != "${ChatColor.LIGHT_PURPLE}HyperMonsterBow") return
 
+
     }
 
 

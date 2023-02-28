@@ -1,14 +1,18 @@
 package me.gwanjong.gwanjung
 
+import me.gwanjong.gwanjung.Enchant.EnchantUI
 import me.gwanjong.gwanjung.Item.DropItem.ElderGuardianEye
 import me.gwanjong.gwanjung.Item.DropItem.WardenHeart
 import me.gwanjong.gwanjung.UI.MainUI
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.inventory.InventoryOpenEvent
+import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
 
 class Event : Listener {
@@ -25,6 +29,15 @@ class Event : Listener {
         }
 
     }
+
+    @EventHandler
+    fun Enchantment(event: InventoryOpenEvent) {
+        if(event.inventory.type != InventoryType.ENCHANTING) return
+        val player = event.player as Player
+        event.isCancelled = true
+        EnchantUI().open(player)
+    }
+
 
     @EventHandler
     fun WardenDeathEvent(event: EntityDeathEvent) {
