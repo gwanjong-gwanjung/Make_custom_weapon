@@ -13,6 +13,7 @@ import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBMEvent
 import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBMRecipe
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonEvent
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.SingijeonRecipe
+import me.gwanjong.gwanjung.Item.Weapon.SummonersWand.SummonersWandEvent
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -30,6 +31,7 @@ class Main : JavaPlugin(), Listener{
         server.pluginManager.registerEvents(HumanBowEvent(), this)
         server.pluginManager.registerEvents(HyperMonsterBowEvent(), this)
         server.pluginManager.registerEvents(ICBMEvent(), this)
+        server.pluginManager.registerEvents(SummonersWandEvent(), this)
 
         HumanBowRecipe(server)
         HyperionRecipe(server)

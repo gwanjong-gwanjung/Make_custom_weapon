@@ -28,8 +28,6 @@ open class Timer {
 
     }
 
-
-
     open fun player(): Player? {return null}
     open fun Time() : Int {return 0}
     open fun message(): String {return "초 남았습니다"}
@@ -37,3 +35,4 @@ open class Timer {
     open fun timerSound() {}
 
 }
+

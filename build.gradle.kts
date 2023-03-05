@@ -13,9 +13,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT") //해당되는 버전을 입력
     implementation("io.github.monun:kommand-api:3.1.2")
-    implementation("io.github.monun:tap-api:4.9.1")
     implementation("io.github.monun:invfx-api:3.3.0")
-
 }
 
 tasks.test {

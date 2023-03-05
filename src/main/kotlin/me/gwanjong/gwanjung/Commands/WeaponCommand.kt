@@ -8,6 +8,7 @@ import me.gwanjong.gwanjung.Item.Weapon.HyperMonsterBow.HyperMonsterBow
 import me.gwanjong.gwanjung.Item.Weapon.Hyperion.Hyperion
 import me.gwanjong.gwanjung.Item.Weapon.ICBM.ICBM
 import me.gwanjong.gwanjung.Item.Weapon.Singijeon.Singijeon
+import me.gwanjong.gwanjung.Item.Weapon.SummonersWand.SummonersWand
 import me.gwanjong.gwanjung.Main
 import me.gwanjong.gwanjung.UI.MainUI
 import me.gwanjong.gwanjung.cultural_language
@@ -62,6 +63,12 @@ object WeaponCommand {
                         player.inventory.addItem(ICBM())
                     }
                 }
+                then("SummonersWand") {
+                    executes {
+                        player.sendMessage("${ChatColor.LIGHT_PURPLE}무기를 지급하였습니다")
+                        player.inventory.addItem(SummonersWand())
+                    }
+                }
             }
 
 
@@ -83,7 +90,6 @@ object WeaponCommand {
                 }
 
             }
-
 
             then("language") {
 

@@ -29,6 +29,7 @@ class EnchantUI {
                     player.sendMessage("Test")
                 }
             }
+
         }.let { frame ->
             player.openFrame(frame)
         }
