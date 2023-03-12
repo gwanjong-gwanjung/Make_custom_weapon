@@ -4,6 +4,13 @@ import org.bukkit.Location
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.LivingEntity
 
+/**
+ * 폭발 명령
+ * @param location 폭발의 중심
+ * @param size 각각의 폭발 사이즈
+ * @param x 위치로부터 x축의 범위
+ * @param y 위치로부터 y축의 범위
+ */
 fun Boom(location: Location, size: Int,x: Int, y:Int) {
     val boom = size.toFloat()
     val world = location.world

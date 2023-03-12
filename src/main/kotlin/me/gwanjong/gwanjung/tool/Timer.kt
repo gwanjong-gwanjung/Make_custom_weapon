@@ -4,8 +4,16 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitTask
 
+/**
+ * run -> 동작이 끝나면 명령
+ *
+ * message -> 알림 사용설정
+ *
+ * timerSound -> 1초단위로 나는 소리
+ *
+ * Time - > 시간설정
+ */
 open class Timer {
-
 
     init {
         val plugin = Bukkit.getPluginManager().getPlugin("custom_weapon")
